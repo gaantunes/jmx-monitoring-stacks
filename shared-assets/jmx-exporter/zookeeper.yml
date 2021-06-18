@@ -76,7 +76,7 @@ rules:
   # org.apache.ZooKeeperService:name0=*
   - pattern: "org.apache.ZooKeeperService<name0=(.+)><>(StartTime|ClientPort|SecureClientAddress|Version|SecureClientPort): (.+)"
     name: zookeeper_$2
-    value: 1
+    type: GAUGE
     labels:
       server_name: "$1"
       $2: "$3"
@@ -85,3 +85,6 @@ rules:
   - pattern: "org.apache.ZooKeeperService<name0=(.+)><>(.+): (.+)"
     name: zookeeper_$2
     type: GAUGE
+    labels:
+      server_name: "$1"
+      $2: "$3"
